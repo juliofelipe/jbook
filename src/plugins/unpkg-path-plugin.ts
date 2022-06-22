@@ -48,7 +48,7 @@ export const unpkgPathPlugin = () => {
           };
         }
 
-        const cacheResult = await fileCache.getItem(args.path);
+        const cacheResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path);
 
         if (cacheResult) {
           return cacheResult;
@@ -56,7 +56,7 @@ export const unpkgPathPlugin = () => {
 
         const { data, request } = await axios.get(args.path);
 
-        const result = {
+        const result: esbuild.OnLoadResult = {
           loader: 'jsx',
           contents: data,
           resolveDir: new URL('./', request.responseURL).pathname
