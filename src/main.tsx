@@ -2,6 +2,7 @@ import * as esbuild from 'esbuild-wasm';
 import React, { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
+import { fetchPlugin } from './plugins/fetch-plugin';
 
 const App = () => {
   const ref = useRef<any>();
@@ -30,14 +31,12 @@ const App = () => {
       entryPoints: ['index.js'],
       bundle: true,
       write: false,
-      plugins: [unpkgPathPlugin(input)],
+      plugins: [unpkgPathPlugin(), fetchPlugin(input)],
       define: {
         [env]: '"production"',
         globalName: "window",
       },
     })
-
-    // console.log(result)
 
     setCode(result.outputFiles[0].text);
   };
