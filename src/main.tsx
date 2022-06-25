@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store } from './state';
 import TextEditor from './components/text-editor';
+import CellList from './components/cell-list';
 
 
 const App = () => {
@@ -13,7 +14,8 @@ const App = () => {
     <Provider store={store}>
       <div>
         {/* <CodeCell /> */}
-        <TextEditor />
+        {/* <TextEditor /> */}
+        <CellList />
       </div>
     </Provider>
     )
