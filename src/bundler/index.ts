@@ -23,6 +23,8 @@ try {
       [env]: '"production"',
       globalName: "window",
     },
+    jsxFactory: '_React.createElement',
+    jsxFragment: '_React.Fragment'
   });
 
     return {
