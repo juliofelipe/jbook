@@ -5,10 +5,13 @@ import CellListItem from "./cell-list-item";
 import AddCell from './add-cell';
 
 const CellList: React.FC = () => {
+    // @ts-ignore
     const cells = useTypedSelector(({ cells: { order, data }}) => 
+        // @ts-ignore
         order.map((id) =>  data[id])
     );
 
+    // @ts-ignore
     const renderedCells = cells.map((cell) => (
         <Fragment key={cell.id}>
             <CellListItem key={cell.id} cell={cell} />
